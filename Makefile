@@ -30,6 +30,7 @@ SRC_PATH=./src/
 INC_PATH=./include/
 OBJ_PATH=./obj/
 LIB_PATH=./
+TEST_PATH=../test_path/
 
 SRC_NAME=main.c\
 		 tetri_sp_check.c\
@@ -103,21 +104,21 @@ fclean: clean
 test: re
 	@rm -rf result.log
 	@clear
-	-@./$(NAME) test_path/2barre > result.log
+	-@./$(NAME) $(TEST_PATH)2barre > result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/Test >> result.log
+	-@./$(NAME) $(TEST_PATH)Test >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/agran >> result.log
+	-@./$(NAME) $(TEST_PATH)agran >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/barre >> result.log
+	-@./$(NAME) $(TEST_PATH)barre >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/2barreError >> result.log
+	-@./$(NAME) $(TEST_PATH)2barreError >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/errors3.txt >> result.log
+	-@./$(NAME) $(TEST_PATH)errors3.txt >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/vide >> result.log
+	-@./$(NAME) $(TEST_PATH)vide >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) test_path/test >> result.log
+	-@./$(NAME) $(TEST_PATH)test >> result.log
 	echo ''
 	@$(MAKE) fclean
 	@(cd ./ && $(MAKE) fclean)
