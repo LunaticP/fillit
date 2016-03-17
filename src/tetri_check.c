@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 11:54:22 by vthomas           #+#    #+#             */
-/*   Updated: 2016/03/16 05:19:26 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/03/17 20:23:41 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int				tetri_openfile(char *path, int flags, int *fd)
 		close(*fd);
 	*fd = open(path, flags);
 	if (*fd < 0)
-		tetri_exit();
+		tetri_exit(NULL);
 	return (*fd);
 }
 
@@ -52,7 +52,7 @@ static int				tetri_count(int fd)
 		nb++;
 	ft_strdel(&buf);
 	if (nb < 1)
-		tetri_exit();
+		tetri_exit(NULL);
 	return (nb);
 }
 
@@ -86,22 +86,23 @@ unsigned short			*tetri_read(char *path, int *n)
 	unsigned short	*tetri;
 	int				ret;
 	char			*buf;
+	int				cnt;
 
 	*n = 0;
 	fd = 0;
 	buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1);
 	fd = tetri_openfile(path, O_RDONLY, &fd);
-	tetri = ft_memalloc(sizeof(unsigned short) * tetri_count(fd));
+	cnt = tetri_count(fd);
+	tetri = ft_memalloc(sizeof(unsigned short) * cnt);
 	fd = tetri_openfile(path, O_RDONLY, &fd);
 	while ((ret = read(fd, buf, 21)))
 	{
+		if (ret == 21 && *n == cnt)
+			tetri_exit(&fd);
 		buf[20] = '\n';
 		buf[21] = '\0';
 		if (verif_tetri(buf, ret) != -1)
-		{
-			close(fd);
-			tetri_exit();
-		}
+			tetri_exit(&fd);
 		tetri[*n] = tetri_readtetri(buf);
 		*n += 1;
 	}

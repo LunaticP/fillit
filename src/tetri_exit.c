@@ -6,14 +6,16 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/06 10:14:51 by vthomas           #+#    #+#             */
-/*   Updated: 2016/03/06 10:15:35 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/03/17 20:17:59 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	tetri_exit(void)
+void	tetri_exit(int *fd)
 {
+	if (fd != NULL)
+		close(fd);
 	ft_putendl("error");
 	exit(-1);
 }
