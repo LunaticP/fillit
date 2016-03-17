@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 15:47:30 by vthomas           #+#    #+#             */
-/*   Updated: 2016/03/16 06:42:15 by aviau            ###   ########.fr       */
+/*   Updated: 2016/03/17 20:21:33 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ void	tetri_sp_check(char *t)
 	int		a;
 
 	if (check_char(t))
-		tetri_exit();
+		tetri_exit(NULL);
 	a = check_form(t);
 	if (a != 6 && a != 8)
 	{
-		tetri_exit();
+		tetri_exit(NULL);
 	}
 }
