@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 11:54:22 by vthomas           #+#    #+#             */
-/*   Updated: 2016/03/17 20:23:41 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/03/17 20:42:36 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,8 @@ unsigned short			*tetri_read(char *path, int *n)
 	fd = tetri_openfile(path, O_RDONLY, &fd);
 	while ((ret = read(fd, buf, 21)))
 	{
-		if (ret == 21 && *n == cnt)
+		if (ret == 21 && *n == cnt - 1)
 			tetri_exit(&fd);
-		buf[20] = '\n';
 		buf[21] = '\0';
 		if (verif_tetri(buf, ret) != -1)
 			tetri_exit(&fd);

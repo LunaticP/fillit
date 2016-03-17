@@ -114,7 +114,8 @@ test: re
 	@echo '' >> result.log
 	-@./$(NAME) $(TEST_PATH)2barreError >> result.log
 	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)errors3.txt >> result.log
+	@echo 'Error 3' >> result.log
+	-@./$(NAME) $(TEST_PATH)error_3 >> result.log
 	@echo '' >> result.log
 	-@./$(NAME) $(TEST_PATH)vide >> result.log
 	@echo '' >> result.log
