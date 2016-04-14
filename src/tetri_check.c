@@ -6,12 +6,11 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 11:54:22 by vthomas           #+#    #+#             */
-/*   Updated: 2016/04/14 10:23:18 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/04/14 10:40:41 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "stdio.h"
 
 static unsigned short	tetri_readtetri(char *buf)
 {
@@ -49,7 +48,7 @@ static int				tetri_count(int fd)
 	char	*buf;
 
 	nb = 0;
-	if (buf = (char *)malloc(sizeof(char) * BUF_SIZE) == NULL)
+	if ((buf = (char *)malloc(sizeof(char) * BUF_SIZE)) == NULL)
 		tetri_exit(&fd);
 	while ((ret = read(fd, buf, 21)))
 		if (++nb > 25)
@@ -90,18 +89,18 @@ unsigned short			*tetri_read(char *path, int *n)
 	unsigned short	*tetri;
 	int				ret;
 	char			*buf;
-	int				cnt;
+	int				c;
 
 	*n = 0;
 	fd = 0;
-	buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1);
 	fd = tetri_openfile(path, O_RDONLY, &fd);
-	cnt = tetri_count(fd);
-	tetri = (char *)ft_memalloc(sizeof(unsigned short) * cnt);
+	c = tetri_count(fd);
+	c = (tetri = (t_tetri *)ft_memalloc(sizeof(unsigned short) * c)) ? c : -1;
+	c = (buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1)) ? c : -1;
 	fd = tetri_openfile(path, O_RDONLY, &fd);
 	while ((ret = read(fd, buf, 21)))
 	{
-		if (ret == 21 && *n == cnt - 1)
+		if (ret == 21 && *n == c - 1)
 			tetri_exit(&fd);
 		buf[21] = '\0';
 		if (verif_tetri(buf, ret) != -1)

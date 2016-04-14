@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 09:55:35 by vthomas           #+#    #+#             */
-/*   Updated: 2016/02/20 09:55:37 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/04/14 10:42:51 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ char		*pl_int(int *count, int *over_ligne, char *grid, int i)
 
 	*count = 0;
 	*over_ligne = 0;
-	grid_temp = (char*)malloc(sizeof(char) * (i * i));
+	if ((grid_temp = (char*)malloc(sizeof(char) * (i * i))) == NULL)
+		tetri_exit(NULL);
 	ft_strncpy(grid_temp, grid, i * i);
 	return (grid_temp);
 }
