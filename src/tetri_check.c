@@ -6,25 +6,27 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 11:54:22 by vthomas           #+#    #+#             */
-/*   Updated: 2016/03/17 20:42:36 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/04/14 10:23:18 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include "stdio.h"
 
 static unsigned short	tetri_readtetri(char *buf)
 {
 	unsigned short	tetri;
+	int				i;
 
 	tetri = 0;
+	i = 0;
 	tetri_sp_check(buf);
-	while (*buf != '\0')
+	while (i < 20)
 	{
-		if (*buf++ == '#')
+		if (buf[i] == '#')
 			tetri++;
-		if (*buf == '\n')
-			continue;
-		tetri <<= (*buf != '\0') ? 1 : 0;
+		tetri <<= (buf[i] != '\n' && i < 18) ? 1 : 0;
+		i++;
 	}
 	tetri_validate(tetri);
 	return (tetri);
@@ -47,9 +49,11 @@ static int				tetri_count(int fd)
 	char	*buf;
 
 	nb = 0;
-	buf = (char *)malloc(sizeof(char) * BUF_SIZE);
+	if (buf = (char *)malloc(sizeof(char) * BUF_SIZE) == NULL)
+		tetri_exit(&fd);
 	while ((ret = read(fd, buf, 21)))
-		nb++;
+		if (++nb > 25)
+			tetri_exit(&fd);
 	ft_strdel(&buf);
 	if (nb < 1)
 		tetri_exit(NULL);
@@ -93,7 +97,7 @@ unsigned short			*tetri_read(char *path, int *n)
 	buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1);
 	fd = tetri_openfile(path, O_RDONLY, &fd);
 	cnt = tetri_count(fd);
-	tetri = ft_memalloc(sizeof(unsigned short) * cnt);
+	tetri = (char *)ft_memalloc(sizeof(unsigned short) * cnt);
 	fd = tetri_openfile(path, O_RDONLY, &fd);
 	while ((ret = read(fd, buf, 21)))
 	{
