@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 09:57:49 by vthomas           #+#    #+#             */
-/*   Updated: 2016/02/20 09:57:51 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/04/14 10:23:22 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char		*alloc_grid(int *i, char *grid)
 		*i = *i + 1;
 	}
 	nbr = *i * *i;
-	grid = (char*)malloc(sizeof(char) * (nbr));
+	if (!(grid = (char*)malloc(sizeof(char) * (nbr))))
+		tetri_exit(NULL);
 	while (nbr--)
 		grid[nbr] = '.';
 	return (grid);
