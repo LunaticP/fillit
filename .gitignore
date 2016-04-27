@@ -6,3 +6,5 @@ fillit
 libft/libft.a
 libft/obj
 obj
+OUTPUT
+**/*.sav
