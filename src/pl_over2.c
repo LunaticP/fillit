@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/20 09:57:06 by vthomas           #+#    #+#             */
-/*   Updated: 2016/02/20 09:57:08 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/04/27 06:26:06 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		pl_over2(char *grid, char *ptr, int nbr, int over_ligne)
 		*grid = 'A' + nbr;
 	else
 	{
-		free(ptr);
+		*ptr = *ptr;
 		return (1);
 	}
 	return (0);
