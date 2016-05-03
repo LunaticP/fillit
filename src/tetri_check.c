@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/24 11:54:22 by vthomas           #+#    #+#             */
-/*   Updated: 2016/04/14 10:40:41 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/03 11:17:06 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int				tetri_count(int fd)
 	if ((buf = (char *)malloc(sizeof(char) * BUF_SIZE)) == NULL)
 		tetri_exit(&fd);
 	while ((ret = read(fd, buf, 21)))
-		if (++nb > 25)
+		if (++nb > 26)
 			tetri_exit(&fd);
 	ft_strdel(&buf);
 	if (nb < 1)
