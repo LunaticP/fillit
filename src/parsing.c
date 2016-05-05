@@ -6,7 +6,7 @@
 /*   By: aviau <aviau@.42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 07:15:15 by aviau             #+#    #+#             */
-/*   Updated: 2016/05/05 11:49:29 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/05 11:54:10 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ char	*check_piece(char *tetri)
 		tetri_exit(NULL);
 	ft_putstr("SHALL NOT!\n");
 	tetri_conv = str_conv(tetri);
-	ft_putstr("PAAAAAAAAAASSSSSS!\n");
+	ft_putstr(tetri_conv);
+	ft_putstr("\nPAAAAAAAAAASSSSSS!\n");
 	return (tetri_conv);
 }
 
