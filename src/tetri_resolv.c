@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 08:36:28 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 08:41:49 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,7 @@ void		tetri_resolv(t_tetri *tetri, size_t nb)
 		else
 			f_repos(tetri, size);
 	}
+	ret = -1;
+	while (++ret < size)
+		ft_putstr(grid[ret]);
 }
