@@ -30,7 +30,7 @@ SRC_PATH=./src/
 INC_PATH=./include/
 OBJ_PATH=./obj/
 LIB_PATH=./
-TEST_PATH=../test_path/
+TEST_PATH=./test/
 
 SRC_NAME=main.c\
 		 tetri_sp_check.c\
@@ -39,21 +39,7 @@ SRC_NAME=main.c\
 		 tetri_show_result.c\
 		 tetri_validate.c\
 		 tetri_exit.c\
-		 usage.c\
-		 rm_tetri.c\
-		 pl_intest.c\
-		 pl_count.c\
-		 pl_seg.c\
-		 pl_end.c\
-		 pl_over.c\
-		 pl_over2.c\
-		 pl_int.c\
-		 pl_int2.c\
-		 pl_tetri.c\
-		 alloc_grid.c\
-		 resolvini.c\
-		 test_exit.c\
-		 resolv.c
+		 usage.c
 INC_NAME=libft.h\
 		 fillit.h
 OBJ_NAME=$(SRC_NAME:.c=.o)
@@ -102,30 +88,8 @@ fclean: clean
 	@echo "\nWow ! Student clean it so much !\n"
 
 test: re
-	@rm -rf result.log
-	@clear
-	-@./$(NAME) $(TEST_PATH)2barre > result.log
-	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)Test >> result.log
-	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)agran >> result.log
-	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)barre >> result.log
-	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)2barreError >> result.log
-	@echo '' >> result.log
-	@echo 'Error 3' >> result.log
-	-@./$(NAME) $(TEST_PATH)error_3 >> result.log
-	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)vide >> result.log
-	@echo '' >> result.log
-	-@./$(NAME) $(TEST_PATH)test >> result.log
-	echo ''
-	@$(MAKE) fclean
-	@(cd ./ && $(MAKE) fclean)
 	@clear
 	@echo "\033[5;31;4m\t\tSTART TEST\033[0m\n"
-	@cat result.log
 
 norme:
 	@norminette $(SRC) $(addprefix $(INC_PATH),$(INC_NAME))
