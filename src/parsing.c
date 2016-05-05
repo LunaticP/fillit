@@ -6,7 +6,7 @@
 /*   By: aviau <aviau@.42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 07:15:15 by aviau             #+#    #+#             */
-/*   Updated: 2016/05/05 09:18:32 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/05 09:23:22 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ t_tetri	*parsing(char *file)
 
 	fd = open(file, O_RDONLY);
 	count = 0;
+	tetri = ft_strnew(21);
 	if (fd < 0)
 		tetri_exit(&fd);
 	while (read(fd, tetri, 21))
