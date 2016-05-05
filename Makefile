@@ -39,6 +39,7 @@ SRC_NAME=main.c\
 		 tetri_show_result.c\
 		 tetri_validate.c\
 		 tetri_exit.c\
+		 tetri_new.c\
 		 usage.c
 INC_NAME=libft.h\
 		 fillit.h

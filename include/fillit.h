@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:14:40 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 06:30:41 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 06:52:33 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ void			tetri_show_result(const char *tetri, const int size);
 void			tetri_validate(t_tetri tetri);
 void			tetri_sp_check(char *t);
 void			tetri_exit(int *fd);
+t_tetri			tetri_new(t_tetri *last, t_tetri *next, size_t nb, char *tetri);
 void			usage(void);
 #endif

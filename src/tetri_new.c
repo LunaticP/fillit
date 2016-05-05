@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tetri_resolv.c                                     :+:      :+:    :+:   */
+/*   tetri_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 06:41:36 by vthomas          ###   ########.fr       */
+/*   Created: 2016/05/05 06:41:53 by vthomas           #+#    #+#             */
+/*   Updated: 2016/05/05 06:52:36 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	tetri_resolv(t_tetri *tetri, size_t nb)
+t_tetri	*tetri_new(t_tetri *last, t_tetri *next, size_t nb, char *tetri)
 {
-	size_t	taille;
-	size_t	x;
-	size_t	y;
-	char	*final_str;
+	t_tetri	*tetri_new;
 
-	taille = 2;
-	x = 0;
-	y = 0;
-	final_str = ft_strnew(taille * taille);
+	tetri_new = ft_memalloc(sizeof(t_tetri));
+	if (tetri_new == NULL)
+		return (NULL);
+	tetri_new->last = last;
+	tetri_new->next = next;
+	tetri_new->n = nb;
+	ft_strcopy(tetri_new->tetri, tetri);
+	return (tetri_new);
 }
