@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 08:41:49 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 09:13:31 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	f_repos(t_tetri *tetri, int size)
 	}
 }
 
-void		tetri_resolv(t_tetri *tetri, size_t nb)
+void		tetri_resolv(t_tetri *tetri)
 {
 	char	**grid;
 	int		size;
