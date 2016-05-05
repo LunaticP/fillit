@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 06:36:34 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 05:58:10 by vthomas          ###   ########.fr       */
+/*   Created: 2016/05/05 06:14:40 by vthomas           #+#    #+#             */
+/*   Updated: 2016/05/05 06:30:41 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,18 @@
 # include "libft.h"
 # define BUF_SIZE 21
 
-void	tetri_show_result(const char *tetri, const int size);
-void	tetri_validate(t_tetri tetri);
-void	tetri_sp_check(char *t);
-void	tetri_exit(int *fd);
-void	usage(void);
-void	test_exit(char *grid, int *i, int *n, unsigned short *tetri[2]);
+typedef struct	s_tetri
+{
+	struct s_tetri	*next;
+	struct s_tetri	*last;
+	size_t			x;
+	size_t			y;
+	size_t			n;
+	char			*tetri;
+}				t_tetri;
+void			tetri_show_result(const char *tetri, const int size);
+void			tetri_validate(t_tetri tetri);
+void			tetri_sp_check(char *t);
+void			tetri_exit(int *fd);
+void			usage(void);
 #endif

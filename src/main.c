@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 06:36:54 by vthomas           #+#    #+#             */
-/*   Updated: 2016/02/24 06:38:51 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 06:03:06 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		main(int argv, char **argc)
 {
-	unsigned short	*tetri[2];
+	:	*tetri[2];
 	int				n;
 	int				i;
 
@@ -25,6 +25,6 @@ int		main(int argv, char **argc)
 	tetri[0] = tetri_read(argc[1], &n);
 	tetri_adjust(tetri[0], n);
 	i = n;
-	resolv(tetri, n, &i, NULL);
+	tetei_resolv(tetri, n, &i, NULL);
 	return (0);
 }
