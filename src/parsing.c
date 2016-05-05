@@ -6,7 +6,7 @@
 /*   By: aviau <aviau@.42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 07:15:15 by aviau             #+#    #+#             */
-/*   Updated: 2016/05/05 11:35:31 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/05 11:49:29 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ char	*check_piece(char *tetri)
 		tetri_exit(NULL);
 	if (check_form(tetri))
 		tetri_exit(NULL);
-
-	
+	ft_putstr("SHALL NOT!\n");
+	tetri_conv = str_conv(tetri);
+	ft_putstr("PAAAAAAAAAASSSSSS!\n");
 	return (tetri_conv);
 }
 
@@ -84,22 +85,27 @@ void	first_read(char *file)
 {
 	int		fd;
 	int		ret;
+	int		last;
 	int		tetri_nb;
 	char	*tmp;
 
 	fd = open(file, O_RDONLY);
 	tetri_nb = 0;
+	last = 0;
 	tmp = ft_strnew(21);
+	ft_putstr("ACH!\n");
 	while ((ret = read(fd, tmp, 21)))
 	{
 		if (tetri_nb++ > 26)
 			tetri_exit(&fd);
-		
+		last = ret;
 	}
-	if (ret == 0 && ft_strlen(tmp) == 21)
+	ft_putstr("NEIN!\n");
+	if (ret == 0 && last != 20)
 		tetri_exit(&fd);
+	ft_putstr("FURHER!\n");
+	ft_memdel((void **)&tmp);
 	close(fd);
-	
 }
 
 t_tetri	*parsing(char *file)
@@ -111,6 +117,7 @@ t_tetri	*parsing(char *file)
 	t_tetri	*tmp;
 
 	first_read(file);
+	ft_putstr("YOOOOOOOUUUUU!\n");
 	fd = open(file, O_RDONLY);
 	count = 0;
 	tetri = ft_strnew(21);
@@ -118,6 +125,7 @@ t_tetri	*parsing(char *file)
 		tetri_exit(&fd);
 	while (read(fd, tetri, 21))
 	{
+		ft_putnbr(count);
 		if (count++ > 1)
 			tmp = tetri_new(tmp, count, check_piece(tetri));
 		else
@@ -125,8 +133,10 @@ t_tetri	*parsing(char *file)
 			first = tetri_new(NULL, count, check_piece(tetri));
 			tmp = first;
 		}
+		ft_putnbr(count);
 		ft_strclr(tetri);
 	}
+	ft_putstr("PUUUUUUUUUUTE!\n");
 	close(fd);
 	return (first);
 }
