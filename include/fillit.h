@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:14:40 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 09:13:55 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 09:18:33 by vthomas          ###   ########.fr       */
 /*   Updated: 2016/05/05 08:43:13 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -32,6 +32,6 @@ typedef struct	s_tetri
 void			usage(void);
 void			tetri_exit(int *fd);
 void			tetri_resolv(t_tetri *tetri);
-t_tetri			tetri_new(t_tetri *last, t_tetri *next, size_t nb, char *tetri);
+t_tetri			*tetri_new(t_tetri *last, size_t nb, char *tetri)
 t_tetri			*parsing(char *file);
 #endif
