@@ -1,10 +1,5 @@
-perc
-TEST
-**/.*.swp
-SuperTest
+obj/*
+libft/*.a
+**/*.DS_Store
+**/.*sw*
 fillit
-libft/libft.a
-libft/obj
-obj
-OUTPUT
-**/*.sav
