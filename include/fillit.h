@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:14:40 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 06:52:33 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 07:02:27 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct	s_tetri
 	size_t			y;
 	size_t			n;
 	char			*tetri;
+	char			pos;
 }				t_tetri;
 void			tetri_show_result(const char *tetri, const int size);
 void			tetri_validate(t_tetri tetri);
