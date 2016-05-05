@@ -36,7 +36,8 @@ SRC_NAME=main.c\
 		 parsing.c\
 		 tetri_new.c\
 		 tetri_resolv.c\
-		 usage.c
+		 usage.c\
+		 str_conv.c
 INC_NAME=libft.h\
 		 fillit.h
 OBJ_NAME=$(SRC_NAME:.c=.o)
