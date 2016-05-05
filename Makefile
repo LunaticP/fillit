@@ -59,7 +59,7 @@ LIB_FILE=$(addprefix $(LIB),/$(addprefix $(LIB_NAME),.a))
 all: $(NAME)
 $(NAME):$(OBJ)
 	@echo "\033[34m[LIBRAIRIES]\033[0m"
-	@(cd $(LIB) && $(MAKE) re)
+	@(cd $(LIB) && $(MAKE))
 ifeq ($(DEBUG),yes)
 	@echo "\033[32m[MAIN]\033[0m\033[5;31m\t\t(debug)"
 else
