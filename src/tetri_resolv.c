@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 09:30:52 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 09:36:30 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void		tetri_resolv(t_tetri *tetri)
 
 	size = 2;
 	grid = NULL;
-	while (tetri->next == NULL && tetri->pos == 1)
+	ft_putendl("<START>");
+	while (tetri->next != NULL && tetri->pos == 1)
 	{
 		ft_memdel((void **)grid);
 		grid = (char **)ft_memalloc(size * size);
