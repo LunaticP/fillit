@@ -34,7 +34,6 @@ TEST_PATH=./test/
 
 SRC_NAME=main.c\
 		 parsing.c\
-		 tetri_exit.c\
 		 tetri_new.c\
 		 tetri_resolv.c\
 		 usage.c

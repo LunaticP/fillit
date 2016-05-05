@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 09:13:31 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 09:30:52 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,14 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	i = -1;
 	while (++i != 16)
 	{
-		if (tetri_tetri[i] == '.');
+		if (tetri->tetri[i] == '.')
 			continue;
-		grid[tetri->x + (i % 4)][tetri->x + (i / 4)];
+		grid[tetri->x + (i % 4)][tetri->x + (i / 4)] = 'A' + tetri->n;
 	}
 	return (1);
 }
 
-static void	f_reassembly(t_tetri *head, char **grid, int size;)
+static void	f_reassembly(t_tetri *head, char **grid, int size)
 {
 	while (head->last != NULL)
 		head = head->last;
@@ -81,10 +81,10 @@ void		tetri_resolv(t_tetri *tetri)
 	grid = NULL;
 	while (tetri->next == NULL && tetri->pos == 1)
 	{
-		ft_memdel(grid);
+		ft_memdel((void **)grid);
 		grid = (char **)ft_memalloc(size * size);
 		f_reassembly(tetri, grid, size);
-		if (ret = f_tetri_place(tetri, grid, size) == 0)
+		if ((ret = f_tetri_place(tetri, grid, size)) == 0)
 		{
 			size++;
 			continue;

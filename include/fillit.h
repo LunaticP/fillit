@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:14:40 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 09:21:20 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/05 09:29:39 by vthomas          ###   ########.fr       */
 /*   Updated: 2016/05/05 08:43:13 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,9 +23,9 @@ typedef struct	s_tetri
 {
 	struct s_tetri	*next;
 	struct s_tetri	*last;
-	size_t			x;
-	size_t			y;
-	size_t			n;
+	int				x;
+	int				y;
+	int				n;
 	char			*tetri;
 	char			pos;
 }				t_tetri;
