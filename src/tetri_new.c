@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:41:53 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 09:51:59 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/05 11:28:34 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,4 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 	ft_strcpy(tetri_new->tetri, tetri);
 	tetri_new->pos = 0;
 	return (tetri_new);
-}	
+}
