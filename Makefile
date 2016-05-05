@@ -33,13 +33,10 @@ LIB_PATH=./
 TEST_PATH=./test/
 
 SRC_NAME=main.c\
-		 tetri_sp_check.c\
-		 tetri_adjust.c\
-		 tetri_check.c\
-		 tetri_show_result.c\
-		 tetri_validate.c\
+		 parse_check.c\
 		 tetri_exit.c\
 		 tetri_new.c\
+		 tetri_resolv.c\
 		 usage.c
 INC_NAME=libft.h\
 		 fillit.h
