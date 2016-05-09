@@ -6,7 +6,7 @@
 /*   By: aviau <aviau@.42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 07:15:15 by aviau             #+#    #+#             */
-/*   Updated: 2016/05/09 19:37:25 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/09 20:42:38 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int		check_form(char *buff)
 	int		around;
 	char	**form;
 
-	x = 0;
+	x = -1;
 	around = 0;
 	form = ft_strsplit(buff, '\n');
-	while (x < 4)
+	while (x++ < 3)
 	{
-		y = 0;
-		while (y < 4)
+		y = -1;
+		while (y++ < 3)
 		{
 			if (form[x][y] == '#')
 			{
@@ -34,9 +34,7 @@ int		check_form(char *buff)
 				around += (x < 3 && form[x + 1][y] == '#') ? 1 : 0;
 				around += (y < 3 && form[x][y + 1] == '#') ? 1 : 0;
 			}
-			y++;
 		}
-		x++;
 	}
 	if (around == 6 || around == 8)
 		return (0);

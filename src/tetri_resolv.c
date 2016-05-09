@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/09 19:36:20 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/09 22:29:36 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,20 +78,27 @@ void		tetri_resolv(t_tetri *tetri)
 	grid = NULL;
 	ft_putendl("\e[33m(tetri_resolv)\t\e[36malgo start");
 	ft_putstr("\e[33m(tetri_resolv)\t\e[32mtetri = \e[35m");
-	ft_putstr(tetri->tetri);
-	ft_putendl("\e[0m");
-	while (tetri->next != NULL && tetri->pos == 1)
+	ft_putendl(tetri->tetri);
+	ft_putstr("\e[33m(tetri_resolv)\t\e[32mtetri->pos = \e[35m");
+	ft_putnbr_endl((int)tetri->pos);
+	if (!tetri->next)
+	ft_putendl("\e[33m(tetri_resolv)\t\e[32mtetri->next = \e[31mNULL\e[0m");
+	while (tetri->next != NULL && tetri->pos != 1)
 	{
 		ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [while]");
-		ft_memdel((void **)grid);
-		ft_putendl("\e[33m(tetri_resolv)\t\e[32mgrid memdel");
-		grid = (char **)ft_memalloc(size * size);
+		if (grid)
+		{
+			ft_memdel((void **)grid);
+			ft_putendl("\e[33m(tetri_resolv)\t\e[32mgrid memdel");
+		}
+		grid = (char **)ft_memalloc(size);
 		ft_putendl("\e[33m(tetri_resolv)\t\e[32mgrid memalloc");
 		f_reassembly(tetri, grid, size);
-		ft_putendl("\e[33m(tetri_resolv)\t\e[32mf_reassembly");
+		ft_putendl("\e[33m(tetri_resolv)\t\e[32mf_reassembly\e[0m");
 		if ((ret = f_tetri_place(tetri, grid, size)) == 0)
 		{
 			ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [if]");
+			ft_putendl("\e[33m(tetri_resolv)\t\e[36mf_tetri_place returned 0\e[0m");
 			size++;
 			continue;
 		}
@@ -99,6 +106,8 @@ void		tetri_resolv(t_tetri *tetri)
 			tetri = tetri->next;
 		else
 			f_repos(tetri, size);
+		ft_putendl("\e[33m(tetri_resolv)\t\e[36mexited [if]");
+
 	}
 	ft_putendl("\e[33m(tetri_resolv)\t\e[36mexited [while]\e[0m");
 	ret = -1;
