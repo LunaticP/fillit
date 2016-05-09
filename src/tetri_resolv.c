@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 00:42:10 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/10 00:57:13 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 
 	i = -1;
 	pos = 0;
+	ft_putendl("\e[33m(f_tetri_place)\t\e[32mplacing tetri\e[0m");
 	while (++i < 16)
 	{
 		if (tetri->tetri[i] == '.')
@@ -98,7 +99,7 @@ void		tetri_resolv(t_tetri *tetri)
 		if ((ret = f_tetri_place(tetri, grid, size)) == 0)
 		{
 			ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [if]");
-			ft_putendl("\e[33m(tetri_resolv)\t\e[36mf_tetri_place returned 0\e[0m");
+			ft_putendl("\e[33m(tetri_resolv)\t\e[32mf_tetri_place returned 0\e[0m");
 			size++;
 			continue;
 		}
