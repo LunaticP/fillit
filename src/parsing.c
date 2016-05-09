@@ -6,7 +6,7 @@
 /*   By: aviau <aviau@.42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 07:15:15 by aviau             #+#    #+#             */
-/*   Updated: 2016/05/09 19:20:13 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/09 19:37:25 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ t_tetri	*parsing(char *file)
 	t_tetri	*first;
 	t_tetri	*tmp;
 
+	ft_putendl("\e[33m(parsing)\t\e[36mParsing start\e[0m");
 	first_read(file);
 	fd = open(file, O_RDONLY);
 	count = 0;
@@ -129,6 +130,6 @@ t_tetri	*parsing(char *file)
 		ft_strclr(tetri);
 	}
 	close(fd);
-	ft_putendl("\e[33m(parsing)\t\e[32mFile is OK\e[0m");
+	ft_putendl("\e[33m(parsing)\t\e[36mfile is OK\e[0m");
 	return (first);
 }
