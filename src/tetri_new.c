@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:41:53 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 12:10:32 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/09 19:20:54 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 {
 	t_tetri	*tetri_new;
 
-	ft_putendl(tetri);
+	ft_putstr("\e[33m(tetri_new)\t\e[32mtetri = \e[35m");
+	ft_putstr(tetri);
+	ft_putendl("\e[0m");
 	tetri_new = (t_tetri *)ft_memalloc(sizeof(t_tetri));
 	if (tetri_new == NULL)
 		tetri_exit(NULL);
@@ -25,7 +27,6 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 	tetri_new->last = last;
 	tetri_new->next = NULL;
 	tetri_new->n = nb;
-	ft_putendl(tetri);
 	tetri_new->tetri = ft_strnew(16);
 	ft_strcpy(tetri_new->tetri, tetri);
 	tetri_new->pos = 0;
