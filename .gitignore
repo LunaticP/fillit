@@ -3,3 +3,4 @@ libft/*.a
 **/*.DS_Store
 **/.*sw*
 fillit
+**/*.o
