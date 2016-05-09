@@ -6,7 +6,7 @@
 /*   By: aviau <aviau@.42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 07:15:15 by aviau             #+#    #+#             */
-/*   Updated: 2016/05/09 20:42:38 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/10 01:19:46 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	first_read(char *file)
 	tmp = ft_strnew(21);
 	while ((ret = read(fd, tmp, 21)))
 	{
-		if (tetri_nb++ > 26)
+		if (tetri_nb++ > 25)
 			tetri_exit(&fd);
 		last = ret;
 	}
