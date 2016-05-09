@@ -88,6 +88,7 @@ fclean: clean
 test: re
 	@clear
 	@echo "\033[5;31;4m\t\tSTART TEST\033[0m\n"
+	-@./fillit test/valid_0
 
 norme:
 	@norminette $(SRC) $(addprefix $(INC_PATH),$(INC_NAME))

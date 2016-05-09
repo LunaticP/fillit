@@ -6,7 +6,7 @@
 /*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/09 22:29:36 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/10 00:42:10 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void		tetri_resolv(t_tetri *tetri)
 	ft_putnbr_endl((int)tetri->pos);
 	if (!tetri->next)
 	ft_putendl("\e[33m(tetri_resolv)\t\e[32mtetri->next = \e[31mNULL\e[0m");
-	while (tetri->next != NULL && tetri->pos != 1)
+	while (tetri->next != NULL || tetri->pos != 1)
 	{
 		ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [while]");
 		if (grid)
