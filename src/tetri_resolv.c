@@ -87,6 +87,8 @@ void		tetri_resolv(t_tetri *tetri)
 	while (tetri->next != NULL || tetri->pos != 1)
 	{
 		ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [while]");
+		ft_putstr("\e[33m(tetri_resolv)\t\e[32mtetri = \e[35m");
+		ft_putendl(tetri->tetri);
 		if (grid)
 		{
 			ft_memdel((void **)grid);
@@ -104,9 +106,15 @@ void		tetri_resolv(t_tetri *tetri)
 			continue;
 		}
 		else if (ret > 0)
+		{
+			ft_putendl("\e[33m(tetri_resolv)\t\e[32mf_tetri_place returned 1\e[0m");
 			tetri = tetri->next;
+		}
 		else
+		{
+			ft_putendl("\e[33m(tetri_resolv)\t\e[32mf_tetri_place returned -1\e[0m");
 			f_repos(tetri, size);
+		}
 		ft_putendl("\e[33m(tetri_resolv)\t\e[36mexited [if]");
 
 	}

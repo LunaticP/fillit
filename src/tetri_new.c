@@ -27,10 +27,16 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 	if (last != NULL)
 		last->next = tetri_new;
 	tetri_new->last = last;
-	tetri_new->next = NULL;
 	tetri_new->n = nb;
 	tetri_new->tetri = ft_strnew(16);
 	ft_strcpy(tetri_new->tetri, tetri);
 	tetri_new->pos = 0;
 	return (tetri_new);
+}
+
+t_tetri	*tetri_get_first(t_tetri *tetri)
+{
+	while (tetri->next != NULL)
+		tetri = tetri->next;
+	return (tetri);
 }
