@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:32:33 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 06:52:23 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/10 06:56:41 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,19 @@ char	*str_conv(char *input)
 
 void feed_grid(char **grid, int size)
 {
-	ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [feed]\e[0m");
-	int x = 0;
-	int y = 0;
+	int x;
+	int y;
+
+	if (size > 100)
+	{
+		ft_putendl("\e[31mError occured: Size is more big than 100\e[0m");
+		tetri_exit(NULL);
+	}
+	x = 0;
+	y = 0;
 	while (y < size)
 	{
+		grid[y] = ft_strnew(size);
 		while (x < size)
 		{
 			grid[y][x] = '.';
