@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/05/05 11:27:15 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/05 11:27:18 by vthomas          ###   ########.fr       */
+/*   Created: 2016/05/10 03:32:42 by vthomas           #+#    #+#             */
+/*   Updated: 2016/05/10 04:34:34 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,5 @@ void			tetri_resolv(t_tetri *tetri);
 t_tetri			*tetri_new(t_tetri *last, size_t nb, char *tetri);
 t_tetri			*parsing(char *file);
 t_tetri			*tetri_get_first(t_tetri *tetri);
+void			feed_grid(char **grid, int size);
 #endif
