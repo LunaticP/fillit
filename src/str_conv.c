@@ -6,23 +6,30 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:32:33 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 05:11:24 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/10 06:52:23 by aviau            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-char	*replace(char *input)
+char	*remerge(char **t)
+{
+	char	*output;
+
+	output = ft_strnew(16);
+	ft_strcpy(&output[0], t[0]);
+	ft_strcpy(&output[4], t[1]);
+	ft_strcpy(&output[8], t[2]);
+	ft_strcpy(&output[12], t[3]);
+	return (output);
+}
+
+char	**replace(char *input)
 {
 	int		x;
 	char	**t;
 
 	t = ft_strsplit(input, '\n');
-	ft_putendl(t[0]);
-	ft_putendl(t[1]);
-	ft_putendl(t[2]);
-	ft_putendl(t[3]);
-	ft_putchar('\n');
 	while (t[0][0] == '.' && t[1][0] == '.' && t[2][0] == '.' && t[3][0] == '.')
 	{
 		x = -1;
@@ -42,25 +49,18 @@ char	*replace(char *input)
 			t[x] = (t[x + 1]) ? t[x + 1] : "....";
 			t[x] = (t[x + 1]) ? t[x + 1] : "....";
 		}
-	ft_putendl(t[0]);
-	ft_putendl(t[1]);
-	ft_putendl(t[2]);
-	ft_putendl(t[3]);
-	return (input);
-}
+	return (t);
+} 
 
 char	*str_conv(char *input)
 {
 	char	*output;
 
 	output = ft_strnew(16);
-	input = replace(input);
 	if (output == NULL)
 		tetri_exit(NULL);
-	ft_strncpy(&output[0], &input[0], 4);
-	ft_strncpy(&output[4], &input[5], 4);
-	ft_strncpy(&output[8], &input[10], 4);
-	ft_strncpy(&output[12], &input[15], 4);
+	output = remerge(replace(input));
+	ft_putendl(output);
 	return (output);
 }
 
