@@ -36,7 +36,7 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 
 t_tetri	*tetri_get_first(t_tetri *tetri)
 {
-	while (tetri->next != NULL)
-		tetri = tetri->next;
+	while (tetri->last != NULL)
+		tetri = tetri->last;
 	return (tetri);
 }

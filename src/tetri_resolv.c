@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetri_resolv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 02:13:00 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 00:57:13 by vthomas          ###   ########.fr       */
+/*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
+/*   Updated: 2016/05/10 04:35:52 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,30 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	i = -1;
 	pos = 0;
 	ft_putendl("\e[33m(f_tetri_place)\t\e[32mplacing tetri\e[0m");
+	ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mx = \e[35m", tetri->x);
+	ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32my = \e[35m", tetri->y);
+	ft_putstr("\e[0m");
 	while (++i < 16)
 	{
-		if (tetri->tetri[i] == '.')
+		ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mi = \e[35m", i);
+		if (i >= 15)
+		{
+			ft_putendl("");
+			ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mx = \e[35m", tetri->x + (i % 4));
+			ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32my = \e[35m", tetri->y + (i /4));
+			ft_putendl("");
+			return (0);
+		}
+		else if (tetri->tetri[i] == '.')
 			continue;
-		if (tetri->tetri[i] == '#' && size > tetri->x + i % 4 &&
+		else if (tetri->tetri[i] == '#' && size > tetri->x + i % 4 &&
 				size > tetri->y + (i / 4) &&
 				grid[tetri->x + (i % 4)][tetri->y + (i / 4)] == '.')
 			pos++;
-		else if (tetri->y + (i / 4) > size && tetri->x + (i % 4) > size)
-			return (0);
 	}
-	if (pos != 4)
-		return (-1);
 	tetri->pos = 1;
 	i = -1;
+	ft_putendl(grid[0]);
 	while (++i != 16)
 		if (tetri->tetri[i] != '.')
 			grid[tetri->x + (i % 4)][tetri->x + (i / 4)] = 'A' + tetri->n;
@@ -83,18 +92,23 @@ void		tetri_resolv(t_tetri *tetri)
 	ft_putstr("\e[33m(tetri_resolv)\t\e[32mtetri->pos = \e[35m");
 	ft_putnbr_endl((int)tetri->pos);
 	if (!tetri->next)
-	ft_putendl("\e[33m(tetri_resolv)\t\e[32mtetri->next = \e[31mNULL\e[0m");
+		ft_putendl("\e[33m(tetri_resolv)\t\e[32mtetri->next = \e[31mNULL\e[0m");
 	while (tetri->next != NULL || tetri->pos != 1)
 	{
 		ft_putendl("\e[33m(tetri_resolv)\t\e[36mentered [while]");
 		ft_putstr("\e[33m(tetri_resolv)\t\e[32mtetri = \e[35m");
 		ft_putendl(tetri->tetri);
+		ft_putnbr_desc("\e[33m(tetri_resolv)\t\e[32msize = \e[35m", size);
+		ft_putnbr_desc("\e[33m(tetri_resolv)\t\e[32mx = \e[35m", tetri->x);
+		ft_putnbr_desc("\e[33m(tetri_resolv)\t\e[32my = \e[35m", tetri->y);
+		ft_putstr("\e[0m");
 		if (grid)
 		{
-			ft_memdel((void **)grid);
+			ft_memdel((void **)&grid);
 			ft_putendl("\e[33m(tetri_resolv)\t\e[32mgrid memdel");
 		}
 		grid = (char **)ft_memalloc(size);
+		feed_grid(grid, size);
 		ft_putendl("\e[33m(tetri_resolv)\t\e[32mgrid memalloc");
 		f_reassembly(tetri, grid, size);
 		ft_putendl("\e[33m(tetri_resolv)\t\e[32mf_reassembly\e[0m");
