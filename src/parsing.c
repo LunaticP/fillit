@@ -116,10 +116,16 @@ t_tetri	*parsing(char *file)
 		tetri_exit(&fd);
 	while (read(fd, tetri, 21))
 	{
-		if (count++ > 1)
+		if (++count > 1)
+		{
+			ft_putnbr_desc("\e[33m(parsing)\t\e[32mif count:\e[35m", count);
+			ft_putstr("\e[0m");
 			tmp = tetri_new(tmp, count, check_piece(tetri));
+		}
 		else
 		{
+			ft_putnbr_desc("\e[33m(parsing)\t\e[32melse count:\e[35m", count);
+			ft_putstr("\e[0m");
 			first = tetri_new(NULL, count, check_piece(tetri));
 			tmp = first;
 		}

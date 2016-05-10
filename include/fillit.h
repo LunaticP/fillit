@@ -34,4 +34,5 @@ char			*str_conv(char *input);
 void			tetri_resolv(t_tetri *tetri);
 t_tetri			*tetri_new(t_tetri *last, size_t nb, char *tetri);
 t_tetri			*parsing(char *file);
+t_tetri			*tetri_get_first(t_tetri *tetri);
 #endif

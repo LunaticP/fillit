@@ -21,6 +21,6 @@ int		main(int ac, char **av)
 	ft_putendl("\n \e[34m[ PARSING ]\e[0m\n");
 	tetri = parsing(av[1]);
 	ft_putendl("\n \e[34m[ ALGO ]\e[0m\n");
-	tetri_resolv(tetri);
+	tetri_resolv(tetri_get_first(tetri));
 	return (0);
 }
