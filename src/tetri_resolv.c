@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 04:35:52 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 02:32:00 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	ft_putstr("\e[0m");
 	while (++i < 16)
 	{
-		ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mi = \e[35m", i);
-		if (i >= 15)
+		if (i > 15)
 		{
 			ft_putendl("");
 			ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mx = \e[35m", tetri->x + (i % 4));
@@ -43,10 +42,12 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	}
 	tetri->pos = 1;
 	i = -1;
-	ft_putendl(grid[0]);
+	while (++i < size)
+		ft_putendl(grid[0]);
+	i = -1;
 	while (++i != 16)
 		if (tetri->tetri[i] != '.')
-			grid[tetri->x + (i % 4)][tetri->x + (i / 4)] = 'A' + tetri->n;
+			grid[tetri->x + (i % 4)][tetri->x + (i / 4)] = 'B' + tetri->n;
 	return (1);
 }
 
@@ -130,7 +131,6 @@ void		tetri_resolv(t_tetri *tetri)
 			f_repos(tetri, size);
 		}
 		ft_putendl("\e[33m(tetri_resolv)\t\e[36mexited [if]");
-
 	}
 	ft_putendl("\e[33m(tetri_resolv)\t\e[36mexited [while]\e[0m");
 	ret = -1;
