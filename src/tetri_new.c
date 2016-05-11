@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:41:53 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 02:36:41 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 06:48:26 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 {
 	t_tetri	*tetri_new;
 
-	ft_putstr("\e[33m(tetri_new)\t\e[32mtetri = \e[35m");
-	ft_putstr(tetri);
-	ft_putstr("\e[35m [");
-	ft_putnbr(nb);
-	ft_putendl("]\e[0m");
+	ft_debug_var_char("tetri_new", "tetri", tetri);
 	tetri_new = (t_tetri *)ft_memalloc(sizeof(t_tetri));
 	if (tetri_new == NULL)
 		tetri_exit(NULL);

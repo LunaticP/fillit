@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:32:33 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 06:26:50 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 09:53:15 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,19 @@ char **feed_grid(int size)
 		x = 0;
 		while (x < size)
 		{
+			ft_putnbr_endl(x);
 			grid[y][x] = '.';
 			x++;
 		}
+		ft_debug_var_int("feed_grid", "y", y);
+		ft_debug_var_char("feed_grid","grid",grid[0]);
 		y++;
 	}
+	ft_debug_var_char("feed_grid","grid[0]",grid[0]);
+	ft_debug_var_char("feed_grid","grid[1]",grid[1]);
+	ft_debug_var_char("feed_grid","grid[2]",grid[2]);
+	ft_debug_var_char("feed_grid","grid[3]",grid[3]);
+	ft_debug_var_int("feed_grid","size",size);
+	tetri_show(grid, size);
 	return (grid);
 }

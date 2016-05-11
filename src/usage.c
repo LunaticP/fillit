@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 23:35:47 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 05:11:11 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 09:53:12 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,12 @@ void tetri_show(char **grid, int size)
 {
 	int i;
 
-	i = -1;
-	while (++i < size)
+	ft_debug_bloc("tetri_show","start");
+	i = 0;
+	while (i < size)
+	{
 		ft_putendl(grid[i]);
+		i++;
+	}
+	ft_debug_bloc("tetri_show", "end");
 }
