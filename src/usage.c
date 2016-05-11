@@ -6,14 +6,14 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/09 23:35:47 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 04:59:57 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 05:11:11 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-** Function for show the usage
+** Function for show the "usage"
 ** Args:
 **		-void
 ** Return: void

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 14:50:14 by vthomas           #+#    #+#             */
-/*   Updated: 2016/01/25 17:26:47 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 06:03:11 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,9 @@ int				ft_tpow(int nb);
 int				ft_abs(int nb);
 void			ft_putnbr_endl(int nb);
 void			ft_putnbr_desc(const char *desc, int nb);
+void			ft_debug_title(char *text);
+void			ft_debug_info(char *function, char *text);
+void			ft_debug_bloc(char *function, char *text);
+void			ft_debug_var_int(char *function, char *text, int value);
+void			ft_debug_var_char(char *function, char *text, char *value);
 #endif

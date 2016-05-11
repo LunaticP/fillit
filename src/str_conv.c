@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:32:33 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 03:28:54 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 06:26:50 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,21 @@ char	*str_conv(char *input)
 	return (output);
 }
 
-void feed_grid(char **grid, int size)
+/*
+** Function for create the grid and feed it
+** Args:
+**		-int:	The size of the grid
+** Return:
+**		-char **: The grid
+*/
+char **feed_grid(int size)
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
+	char	**grid;
 
-	ft_putendl("\e[32mFeed the grid\e[0m");
+	ft_debug_info("feed_grid", "Feed the grid...");
+	grid = (char **)ft_memalloc(size);
 	y = 0;
 	while (y < size)
 	{
@@ -82,4 +91,5 @@ void feed_grid(char **grid, int size)
 		}
 		y++;
 	}
+	return (grid);
 }
