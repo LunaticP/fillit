@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 02:32:00 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/11 03:03:28 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,21 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 			ft_putendl("");
 			ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mx = \e[35m", tetri->x + (i % 4));
 			ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32my = \e[35m", tetri->y + (i /4));
-			ft_putendl("");
+			ft_putendl("\e[0m");
 			return (0);
 		}
 		else if (tetri->tetri[i] == '.')
 			continue;
-		else if (tetri->tetri[i] == '#' && size > tetri->x + i % 4 &&
+		else if (tetri->tetri[i] == '#' && size > (tetri->x + i % 4) &&
 				size > tetri->y + (i / 4) &&
 				grid[tetri->x + (i % 4)][tetri->y + (i / 4)] == '.')
-			pos++;
+			{
+				ft_putendl("\e[33m(f_tetri_place)\t\e[36mPOS++");
+				ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32mx = \e[35m", tetri->x + (i % 4));
+				ft_putnbr_desc("\e[33m(f_tetri_place)\t\e[32my = \e[35m", tetri->y + (i /4));
+				ft_putstr("\e[0m");
+				pos++;
+			}
 	}
 	tetri->pos = 1;
 	i = -1;
@@ -47,7 +53,7 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	i = -1;
 	while (++i != 16)
 		if (tetri->tetri[i] != '.')
-			grid[tetri->x + (i % 4)][tetri->x + (i / 4)] = 'B' + tetri->n;
+			grid[tetri->x + (i % 4)][tetri->x + (i / 4)] = 'A' + tetri->n;
 	return (1);
 }
 

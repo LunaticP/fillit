@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tetri_new.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vthomas <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 06:41:53 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 01:24:51 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/11 02:36:41 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_tetri	*tetri_new(t_tetri *last, size_t nb, char *tetri)
 	if (last != NULL)
 		last->next = tetri_new;
 	tetri_new->last = last;
-	tetri_new->n = nb;
+	tetri_new->n = nb - 1;
 	tetri_new->tetri = ft_strnew(16);
 	ft_strcpy(tetri_new->tetri, tetri);
 	tetri_new->pos = 0;
