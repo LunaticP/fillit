@@ -6,7 +6,7 @@
 #    By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 21:15:40 by vthomas           #+#    #+#              #
-#    Updated: 2016/05/10 06:13:22 by aviau            ###   ########.fr        #
+#    Updated: 2016/05/11 03:13:54 by vthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME=fillit
 DEBUG=yes
 CC=gcc
 ifeq ($(DEBUG),yes)
-	export CFLAGS=-Wall -Wextra -Werror -g
+	export CFLAGS=-Wall -Wextra -g
 else
 	export CFLAGS=-Wall -Wextra -Werror
 endif

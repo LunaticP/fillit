@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/05 10:32:33 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/10 06:56:41 by aviau            ###   ########.fr       */
+/*   Updated: 2016/05/11 03:20:43 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	**replace(char *input)
 			t[x] = (t[x + 1]) ? t[x + 1] : "....";
 		}
 	return (t);
-} 
+}
 
 char	*str_conv(char *input)
 {
@@ -69,16 +69,13 @@ void feed_grid(char **grid, int size)
 	int x;
 	int y;
 
-	if (size > 100)
-	{
-		ft_putendl("\e[31mError occured: Size is more big than 100\e[0m");
-		tetri_exit(NULL);
-	}
+	ft_putendl("\e[32mFeed the grid\e[0m");
 	x = 0;
 	y = 0;
 	while (y < size)
 	{
 		grid[y] = ft_strnew(size);
+		x = 0;
 		while (x < size)
 		{
 			grid[y][x] = '.';
