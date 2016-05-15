@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/16 01:09:46 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 01:37:02 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,6 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	x = tetri->x;
 	y = tetri->y;
 	t = ft_strdup(tetri->tetri);
-	ft_debug_info("f_tetri_place","ft_strdup\t[OK]");
-	ft_debug_var_char("f_tetri_place", "tetri", t);
-	ft_debug_bloc("f_tetri_place", "while");
-	ft_debug_var_int("f_tetri_place", "size", size);
 	while (i < 16)
 	{
 		if ((x + (i % 4) > size - 1 || y + (i / 4) > size - 1))//si on est trop grand
@@ -66,10 +62,7 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 static void		f_reassembly(t_tetri *head, char **grid, int size)
 {
 	while (head->pos == 1)
-	{
-		f_repos(head, grid, size);
-		head = head->next;
-	}
+		head = f_repos(head, grid, size);
 }
 
 t_tetri			*f_repos(t_tetri *tetri, char ** grid, int size)
@@ -86,18 +79,15 @@ t_tetri			*f_repos(t_tetri *tetri, char ** grid, int size)
 	y = tetri->y;
 	tetri->pos = 1;
 	t = ft_strdup(tetri->tetri);
-	ft_debug_info("f_tetri_place","ft_strdup\t[OK]");
-	ft_debug_var_char("f_tetri_place", "tetri", t);
-	ft_debug_bloc("f_tetri_place", "while");
-	ft_debug_var_int("f_tetri_place", "size", size);
 	while (i < 16)
 	{
-		if (grid[y + (i / 4)][x + (i % 4)] == '.')
-			if (t[i] == '#')
-				grid[y + (i / 4)][x + (i % 4)] = 'A' + tetri->n;
+		if (y + (i / 4) < size && x + (i % 4) < size)
+			if (grid[y + (i / 4)][x + (i % 4)] == '.')
+				if (t[i] == '#')
+					grid[y + (i / 4)][x + (i % 4)] = 'A' + tetri->n;
 		i++;
 	}
-	return (tetri->next);
+	return ((tetri->next == NULL) ? tetri : tetri->next);
 }
 
 /*
@@ -119,13 +109,16 @@ void			tetri_resolv(t_tetri *tetri)
 		if (grid != NULL)
 			ft_memdel((void **)&grid);
 		grid = feed_grid(size);
+		ft_putendl("");
 		ft_debug_info("tetri_resolv", "feed_grid\t[OK]");
-		tetri_show(grid, size);
 		f_reassembly(tetri_get_first(tetri), grid, size);
 		ft_debug_info("tetri_resolv", "f_reassembly\t[OK]");
 		ret = f_tetri_place(tetri, grid, size);
 		ft_debug_info("tetri_resolv","f_tetri_place:\t[OK]");
-		ft_debug_var_int("tetri_resolv","ret", ret);
+		ft_debug_var_char("tetri_resolv","ret", (ret == -1) ? "Agrandir" : ((ret == 0) ? "Move" : "OK !"));
+		ft_debug_var_int("tetri_resolv","current tetriminos", tetri->n);
+		ft_debug_var_int("tetri_resolv", "x", tetri->x);
+		ft_debug_var_int("tetri_resolv", "y", tetri->y);
 		tetri_show(grid, size);
 		if (ret == -1)
 			size++;
@@ -136,5 +129,6 @@ void			tetri_resolv(t_tetri *tetri)
 		usleep(500000);
 		ft_putendl("");
 	}
+	tetri_show(grid, size);
 	ft_putendl("<END>");
 }
