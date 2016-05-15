@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/15 05:05:49 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 01:05:20 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 **		-int:		The Size of the grid
 ** Return: void
 */
-static void	f_reassembly(t_tetri *head, char **grid, int size)
+static void		f_reassembly(t_tetri *head, char **grid, int size)
 {
 	while (head->last != NULL)
 		head = head->last;
@@ -73,7 +73,7 @@ static void	f_reassembly(t_tetri *head, char **grid, int size)
 	}
 }
 
-t_tetri		*f_repos(t_tetri *tetri, char ** grid, int size)
+t_tetri			*f_repos(t_tetri *tetri, char ** grid, int size)
 {
 	int		i;
 	int		x;
@@ -93,9 +93,9 @@ t_tetri		*f_repos(t_tetri *tetri, char ** grid, int size)
 	ft_debug_var_int("f_tetri_place", "size", size);
 	while (i < 16)
 	{
-		if (grid[x + (i % 4)][y + (i / 4)] == '.')
+		if (grid[y + (i / 4)][x + (i % 4)] == '.')
 			if (t[i] == '#')
-				grid[x + (i % 4)][y + (i / 4)] = 'A' + tetri->n;
+				grid[y + (i / 4)][x + (i % 4)] = 'A' + tetri->n;
 		i++;
 	}
 	return (tetri->next);
@@ -107,7 +107,7 @@ t_tetri		*f_repos(t_tetri *tetri, char ** grid, int size)
 **		-t_tetri:	The tetrinimos list
 ** Return: void
 */
-void		tetri_resolv(t_tetri *tetri)
+void			tetri_resolv(t_tetri *tetri)
 {
 	int		size;
 	int		ret;
