@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/11 09:37:21 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/15 02:34:16 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	}
 	if (pos == 4)//si on a positionner 4 bloc
 		return (1);
+	return (0);
 }
 
 /*
@@ -93,7 +94,7 @@ void		tetri_resolv(t_tetri *tetri)
 	while (tetri->next != NULL || tetri->pos != 1)
 	{
 		if (grid != NULL)
-			ft_memdel(&grid);
+			ft_memdel((void **)&grid);
 		grid = feed_grid(size);
 		ft_debug_info("tetri_resolv", "feed_grid\t[OK]");
 		tetri_show(grid, size);

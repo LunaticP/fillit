@@ -6,7 +6,7 @@
 #    By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 21:15:40 by vthomas           #+#    #+#              #
-#    Updated: 2016/05/11 03:13:54 by vthomas          ###   ########.fr        #
+#    Updated: 2016/05/15 03:04:18 by vthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ SRC_NAME=main.c\
 		 tetri_new.c\
 		 tetri_resolv.c\
 		 usage.c\
-		 str_conv.c
+		 str_conv.c\
+		 new_grid.c
 INC_NAME=libft.h\
 		 fillit.h
 OBJ_NAME=$(SRC_NAME:.c=.o)
