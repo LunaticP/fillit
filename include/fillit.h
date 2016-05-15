@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:42 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/15 03:30:34 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/15 05:05:48 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ t_tetri			*tetri_new(t_tetri *last, size_t nb, char *tetri);
 t_tetri			*parsing(char *file);
 t_tetri			*tetri_get_first(t_tetri *tetri);
 char			**feed_grid(int size);
-void			tetri_show(char **grid, int size);
+void			tetri_show(char **grid, int const size);
+t_tetri		*f_repos(t_tetri *tetri, char ** grid, int size);
 #endif

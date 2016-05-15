@@ -6,54 +6,55 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/15 02:59:57 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/15 03:36:51 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/15 04:54:37 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-static char	*doting(int size)
+/*
+** Function for create the line (grid[y])
+** Args:
+**		-int:		The size of the grid.
+** Return:
+**		-char **:	The line.
+*/
+static char	*doting(int const size)
 {
 	char	*str;
 	int		x;
 
-	if ((str = ft_strnew(size)) == NULL)
+	if ((str = (char *)malloc(size + 1)) == NULL)
 		tetri_exit(NULL);
-	x = 0;
-	while (x < size)
+	x = size - 1;
+	while (x >= 0)
 	{
 		str[x] = '.';
-		x++;
+		x--;
 	}
+	str[size] = '\0';
 	return (str);
 }
 
 /*
 ** Function for create the grid and feed it
 ** Args:
-**		-int:		The size of the grid
+**		-int:		The size of the grid.
 ** Return:
-**		-char **:	The grid
+**		-char **:	The grid.
 */
-char	**feed_grid(int size)
+char	**feed_grid(int const size)
 {
 	int y;
 	char **grid;
 
-	y = 0;
-	if ((grid = (char **)ft_memalloc(size)) == NULL)
+	if ((grid = (char **)ft_memalloc(sizeof(char **) * (size + 1))) == NULL)
 		tetri_exit(NULL);
-	while (y < size)
+	y = 0;
+	while (y < size)//pour aller de 0 a size
 	{
 		grid[y] = doting(size);
-		ft_debug_var_int("feed_grid", "y", y);
-		ft_debug_var_int("feed_grid", "&grid[y]", &grid[y]);
-		ft_debug_var_int("feed_grid", "&grid[0]", &grid[0]);
-		ft_debug_var_char("feed_grid", "grid[y]", grid[y]);
-		ft_debug_var_char("feed_grid", "grid[0]", grid[0]);
-		y++;
+		y++;//descend de 1
 	}
-	tetri_show(grid, size);
-	tetri_exit(NULL);
 	return (grid);
 }

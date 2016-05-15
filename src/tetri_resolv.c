@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/15 02:34:16 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/15 05:05:49 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,37 @@ static void	f_reassembly(t_tetri *head, char **grid, int size)
 		head = head->last;
 	while (head->pos == 1)
 	{
-		f_tetri_place(head, grid, size);
+		f_repos(head, grid, size);
 		head = head->next;
 	}
 }
 
-static void	f_repos(t_tetri *tetri, int size)
+t_tetri		*f_repos(t_tetri *tetri, char ** grid, int size)
 {
+	int		i;
+	int		x;
+	int		y;
+	int		pos;
+	char	*t;
+
+	i = 0;
+	pos = 0;
+	x = tetri->x;
+	y = tetri->y;
+	tetri->pos = 1;
+	t = ft_strdup(tetri->tetri);
+	ft_debug_info("f_tetri_place","ft_strdup\t[OK]");
+	ft_debug_var_char("f_tetri_place", "tetri", t);
+	ft_debug_bloc("f_tetri_place", "while");
+	ft_debug_var_int("f_tetri_place", "size", size);
+	while (i < 16)
+	{
+		if (grid[x + (i % 4)][y + (i / 4)] == '.')
+			if (t[i] == '#')
+				grid[x + (i % 4)][y + (i / 4)] = 'A' + tetri->n;
+		i++;
+	}
+	return (tetri->next);
 }
 
 /*
@@ -89,7 +113,7 @@ void		tetri_resolv(t_tetri *tetri)
 	int		ret;
 	char	**grid;
 
-	size = 4;
+	size = 2;
 	grid = NULL;
 	while (tetri->next != NULL || tetri->pos != 1)
 	{
@@ -103,10 +127,12 @@ void		tetri_resolv(t_tetri *tetri)
 		ret = f_tetri_place(tetri, grid, size);
 		ft_debug_info("tetri_resolv","f_tetri_place:\t[OK]");
 		ft_debug_var_int("tetri_resolv","ret", ret);
-		//if (ret == -1)
-		//	size++;
-		usleep(500000);
 		tetri_show(grid, size);
+		if (ret == -1)
+			size++;
+		else if (ret == 1)
+			tetri = f_repos(tetri, grid, size);
+		usleep(500000);
 		ft_putendl("");
 	}
 	ft_putendl("<END>");
