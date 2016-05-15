@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/16 01:05:20 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 01:09:46 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 **		-char **:	The grid where the tetri must be placed
 **		-int:		The size of the grid (size * size)
 ** Return: int
-**		- 0:
+**		- 0:	Must move
 **		- 1:	Can positionnate the current tetrinimos
 **		- -1:	To large, must grow the grid
 */
@@ -43,8 +43,9 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	while (i < 16)
 	{
 		if ((x + (i % 4) > size - 1 || y + (i / 4) > size - 1))//si on est trop grand
-			return (-1);
-		if (grid[x + (i % 4)][y + (i / 4)] == '.')
+			if (t[i] == '#')
+				return (-1);
+		if (grid[y + (i / 4)][x + (i % 4)] == '.')
 			if (t[i] == '#')
 				pos++;
 		i++;
@@ -64,8 +65,6 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 */
 static void		f_reassembly(t_tetri *head, char **grid, int size)
 {
-	while (head->last != NULL)
-		head = head->last;
 	while (head->pos == 1)
 	{
 		f_repos(head, grid, size);
@@ -132,6 +131,8 @@ void			tetri_resolv(t_tetri *tetri)
 			size++;
 		else if (ret == 1)
 			tetri = f_repos(tetri, grid, size);
+		else
+			tetri_repositionate(tetri, size);
 		usleep(500000);
 		ft_putendl("");
 	}
