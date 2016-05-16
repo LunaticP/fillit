@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/16 00:36:08 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/16 04:03:56 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 04:15:45 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,11 @@ int	is_out(t_tetri *tetri, int size, int i)
 		while (x_tmp < 4)
 		{
 			if (tetri->tetri[4 * (i / 4) + x_tmp] == '.')
-			{
-				tetri->y = 0;
-				tetri->x = 0;
 				return (1);
-			}
 			x_tmp++;
 		}
 	}
+	tetri->x = 0;
+	tetri->y = 0;
 	return (0);
 }
