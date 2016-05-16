@@ -6,22 +6,22 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/16 02:16:40 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 03:32:29 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
 /*
-** Function for try to place an tetrinimos
+** Function for try to place an tetrinimos.
 ** Args:
-**		-t_tetri:	The tetrinimos to place
-**		-char **:	The grid where the tetri must be placed
-**		-int:		The size of the grid (size * size)
+**		-t_tetri:	The tetrinimos to place.
+**		-char **:	The grid where the tetri must be placed.
+**		-int:		The size of the grid (size * size).
 ** Return: int
-**		- 0:	Must move
-**		- 1:	Can positionnate the current tetrinimos
-**		- -1:	To large, must grow the grid
+**		- 0:	Must move.
+**		- 1:	Can positionnate the current tetrinimos.
+**		- -1:	To large, must grow the grid.
 */
 static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 {
@@ -36,32 +36,27 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	x = tetri->x;
 	y = tetri->y;
 	t = ft_strdup(tetri->tetri);
-	ft_debug_bloc("f_tetri_place", "while");
 	while (i < 16)
 	{
-		ft_debug_var_int("f_tetri_place", "iterator", i);
-		ft_debug_bloc("f_tetri_place", "First If");
 		if ((x + (i % 4) > size - 1 || y + (i / 4) > size - 1))//si on est trop grand
+			if (!is_out(tetri, size, i))
 				return (-1);
-		ft_debug_bloc("f_tetri_place", "Second If");
 		if (grid[y + (i / 4)][x + (i % 4)] == '.')
 			if (t[i] == '#')
 				pos++;
-		ft_debug_info("f_tetri_place", "new iteration");
 		i++;
 	}
-	ft_debug_bloc("f_tetri_place", "end");
 	if (pos == 4)//si on a positionner 4 bloc
 		return (1);
 	return (0);
 }
 
 /*
-** Function for reassemble the grid
+** Function for reassemble the grid.
 ** Args:
-**		-t_tetri:	The first tetri
+**		-t_tetri:	The first tetri.
 **		-char **:	The grid.
-**		-int:		The Size of the grid
+**		-int:		The Size of the grid.
 ** Return: void
 */
 static void		f_reassembly(t_tetri *head, char **grid, int size)
@@ -70,6 +65,15 @@ static void		f_reassembly(t_tetri *head, char **grid, int size)
 		head = f_repos(head, grid, size);
 }
 
+/*
+** Function for positionnate the current tetriminos in the grid.
+** Args:
+**		-t_tetri:	Current tetriminos.
+**		-char**:	The grid.
+**		-int:		The size of the grid
+** Return: t_tetri
+**		-Next tetriminos
+*/
 t_tetri			*f_repos(t_tetri *tetri, char ** grid, int size)
 {
 	int		i;
@@ -96,9 +100,9 @@ t_tetri			*f_repos(t_tetri *tetri, char ** grid, int size)
 }
 
 /*
-** Function for resolve the fillit
+** Function for resolve the fillit.
 ** Args:
-**		-t_tetri:	The tetrinimos list
+**		-t_tetri:	The tetrinimos list.
 ** Return: void
 */
 void			tetri_resolv(t_tetri *tetri)
