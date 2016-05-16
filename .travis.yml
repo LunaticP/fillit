@@ -16,6 +16,10 @@ env:
 script:
   - make test
 
+branches:
+  only:
+   - nw_algo
+
 addons:
   apt:
     packages:
