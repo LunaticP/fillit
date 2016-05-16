@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/16 03:32:29 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 03:52:15 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ void			tetri_resolv(t_tetri *tetri)
 		ret = f_tetri_place(tetri, grid, size);
 		ft_debug_info("tetri_resolv","f_tetri_place:\t[OK]");
 		ft_debug_var_char("tetri_resolv","ret", (ret == -1) ? "Agrandir" : ((ret == 0) ? "Move" : "OK !"));
+		ft_debug_var_int("tetri_resolv","size", size);
 		ft_debug_var_int("tetri_resolv","current tetriminos", tetri->n);
 		ft_debug_var_int("tetri_resolv", "x", tetri->x);
 		ft_debug_var_int("tetri_resolv", "y", tetri->y);
