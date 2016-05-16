@@ -6,7 +6,7 @@
 /*   By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/10 03:32:17 by vthomas           #+#    #+#             */
-/*   Updated: 2016/05/16 01:37:02 by vthomas          ###   ########.fr       */
+/*   Updated: 2016/05/16 02:16:40 by vthomas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,21 @@ static int	f_tetri_place(t_tetri *tetri, char **grid, int size)
 	x = tetri->x;
 	y = tetri->y;
 	t = ft_strdup(tetri->tetri);
+	ft_debug_bloc("f_tetri_place", "while");
 	while (i < 16)
 	{
+		ft_debug_var_int("f_tetri_place", "iterator", i);
+		ft_debug_bloc("f_tetri_place", "First If");
 		if ((x + (i % 4) > size - 1 || y + (i / 4) > size - 1))//si on est trop grand
-			if (t[i] == '#')
 				return (-1);
+		ft_debug_bloc("f_tetri_place", "Second If");
 		if (grid[y + (i / 4)][x + (i % 4)] == '.')
 			if (t[i] == '#')
 				pos++;
+		ft_debug_info("f_tetri_place", "new iteration");
 		i++;
 	}
+	ft_debug_bloc("f_tetri_place", "end");
 	if (pos == 4)//si on a positionner 4 bloc
 		return (1);
 	return (0);

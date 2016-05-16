@@ -6,7 +6,7 @@
 #    By: vthomas <vthomas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 21:15:40 by vthomas           #+#    #+#              #
-#    Updated: 2016/05/16 00:38:52 by vthomas          ###   ########.fr        #
+#    Updated: 2016/05/16 02:07:45 by vthomas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,7 @@ fclean: clean
 test: re
 	@clear
 	@echo "\033[5;31;4m\t\tSTART TEST\033[0m\n"
-	-@./fillit test/valid_0
+	-@./fillit test/valid_1
 
 norme:
 	@norminette $(SRC) $(addprefix $(INC_PATH),$(INC_NAME))
